@@ -30,13 +30,14 @@ clean:
 run: copy
 	cd $(HOME) ; mpirun -f ~/pi_mpihostsfile -n 9 ~/sph.out ; cd $(HOME)/SPH
 
+
 copy:
-	scp ./bin/sph.out pi1:~/
-	scp ./bin/sph.out pi2:~/
-	scp ./bin/sph.out pi3:~/
-	scp ./bin/sph.out pi4:~/
-	scp ./bin/sph.out pi5:~/
-	scp ./bin/sph.out pi6:~/
-	scp ./bin/sph.out pi7:~/
-	scp ./bin/sph.out pi8:~/
-	scp ./bin/sph.out pi9:~/
+	rsync ./bin/sph.out chip:~/
+	rsync ./bin/sph.out chip2:~/
+	rsync ./bin/sph.out chip3:~/
+	rsync ./bin/sph.out chip4:~/
+	rsync ./bin/sph.out chip5:~/
+	rsync ./bin/sph.out chip6:~/
+	rsync ./bin/sph.out chip7:~/
+	rsync ./bin/sph.out chip8:~/
+	rsync ./bin/sph.out chip9:~/
