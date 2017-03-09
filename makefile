@@ -11,7 +11,7 @@ all: ogl_utils.o egl_utils.o dividers_gl.o
 ogl_utils.o: ogl_utils.c ogl_utils.h glfw_utils.h egl_utils.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c ogl_utils.c -o ogl_utils.o
 
-egl_utils.o: egl_utils.c egl_utils.h fcntl.h bcm_host.h renderer.h controls.h
+egl_utils.o: egl_utils.c egl_utils.h bcm_host.h renderer.h controls.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c egl_utils.c -o egl_utils.o
 
 dividers_gl.o: dividers_gl.c dividers_gl.h glfw_utils.h egl_utils.h
