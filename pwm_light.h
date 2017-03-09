@@ -1,6 +1,7 @@
 #ifndef PWM_LIGHT_H
 #define PWM_LIGHT_H
 
+#include <stdint.h>
 #include <wiringPi.h>
 #include <softPwm.h>
 
