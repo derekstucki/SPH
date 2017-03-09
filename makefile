@@ -89,8 +89,7 @@ clean:
 	rm -f ./*.o
 	cd blink1 && make clean
 
-run: copy
-	cd $(HOME) ; mpirun -f ~/pi_mpihostsfile -n 9 ~/sph.out ; cd $(HOME)/SPH
+run: copy resetleds saferun
 
 copy:
 	rsync ./bin/sph.out chip:~/
@@ -115,3 +114,6 @@ resetleds:
 	gpio mode 23 in
 	gpio mode 24 in
 	gpio mode 25 in
+
+saferun:
+	cd $(HOME) ; mpirun -f ~/pi_mpihostsfile -n 9 ~/sph.out ; cd $(HOME)/SPH
