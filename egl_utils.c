@@ -176,7 +176,7 @@ void init_ogl(gl_t *state, render_t *render_state)
 
     // Open input event
     state->controller_1_fd = open("/dev/input/event0",O_RDONLY|O_NONBLOCK);
-    state->controller_2_fd = open("/dev/input/event1",O_RDONLY|O_NONBLOCK);
+    state->controller_2_fd = open("/dev/input/event3",O_RDONLY|O_NONBLOCK);
 
     #ifdef LEAP_MOTION_ENABLED
       curl_chunk.memory = malloc(1);
