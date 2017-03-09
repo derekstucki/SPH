@@ -92,7 +92,6 @@ clean:
 run: copy
 	cd $(HOME) ; mpirun -f ~/pi_mpihostsfile -n 9 ~/sph.out ; cd $(HOME)/SPH
 
-
 copy:
 	rsync ./bin/sph.out chip:~/
 	rsync ./bin/sph.out chip2:~/
@@ -103,3 +102,16 @@ copy:
 	rsync ./bin/sph.out chip7:~/
 	rsync ./bin/sph.out chip8:~/
 	rsync ./bin/sph.out chip9:~/
+
+resetleds:
+	ssh chip2 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip3 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip4 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip5 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip6 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip7 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip8 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	ssh chip9 "gpio mode 23 in;gpio mode 24 in; gpio mode 25 in"
+	gpio mode 23 in
+	gpio mode 24 in
+	gpio mode 25 in
