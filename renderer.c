@@ -43,7 +43,7 @@ THE SOFTWARE.
 #endif
 
 #ifdef PWMLIGHT
-    #include "pmw_light.h"
+    #include "pwm_light.h"
 #endif
 
 #ifdef BLINK1
