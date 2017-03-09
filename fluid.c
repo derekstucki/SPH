@@ -100,11 +100,11 @@ void start_simulation()
     params.tunable_params.mover_type = SPHERE_MOVER;
 
     #ifdef RASPI
-    int steps_per_frame = 1; // Number of steps to compute before updating render node
+    int steps_per_frame = 3; // Number of steps to compute before updating render node
     #else
     int steps_per_frame = 4;
-    params.tunable_params.time_step /= (float)steps_per_frame;
     #endif
+    params.tunable_params.time_step /= (float)steps_per_frame;
 
     // The number of particles used may differ slightly
     #ifdef RASPI
