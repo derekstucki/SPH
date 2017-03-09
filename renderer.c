@@ -42,6 +42,10 @@ THE SOFTWARE.
     #include "rgb_light.h"
 #endif
 
+#ifdef PMWLIGHT
+    #include "pmw_light.h"
+#endif
+
 #ifdef BLINK1
     #include "blink1_light.h"
 #endif
@@ -93,7 +97,7 @@ int start_renderer()
     render_state.exit_menu_state = &exit_menu_state;
 
     // Initialize RGB Light if present
-    #if defined LIGHT || defined BLINK1
+    #if defined LIGHT || defined BLINK1 || defined PMWLIGHT
     rgb_light_t light_state;
     init_rgb_light(&light_state, 255, 0, 0);
     #endif
@@ -192,7 +196,7 @@ int start_renderer()
         hsv_to_rgb(HSV, colors_by_rank+3*i);
     }
  
-    #if defined LIGHT || defined BLINK1
+    #if defined LIGHT || defined BLINK1 || defined PMWLIGHT
     MPI_Bcast(colors_by_rank, 3*render_state.num_compute_procs, MPI_FLOAT, 0, MPI_COMM_WORLD);
     #endif
 
@@ -372,7 +376,7 @@ int start_renderer()
         num_steps++;
     }
 
-    #if defined LIGHT || defined BLINK1
+    #if defined LIGHT || defined BLINK1 || defined PMWLIGHT
     shutdown_rgb_light(&light_state);
     #endif
 

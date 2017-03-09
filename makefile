@@ -36,13 +36,13 @@ rectangle_gl.o: rectangle_gl.c rectangle_gl.h egl_utils.h glfw_utils.h
 lodepng.o: lodepng.c lodepng.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c lodepng.c -o lodepng.o
 
-background_gl.o: background_gl.c background_gl.h
+background_gl.o: background_gl.c background_gl.h glfw_utils.h egl_utils.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c background_gl.c -o background_gl.o
 
-font_gl.o: font_gl.c font_gl.h
+font_gl.o: font_gl.c font_gl.h renderer.h glfw_utils.h egl_utils.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c font_gl.c -o font_gl.o
 
-particles_gl.o: particles_gl.c particles_gl.h
+particles_gl.o: particles_gl.c particles_gl.h glfw_utils.h egl_utils.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c particles_gl.c -o particles_gl.o
 
 mover_gl.o: mover_gl.c mover_gl.h
@@ -66,9 +66,9 @@ communication.o: communication.c communication.h
 fluid.o: fluid.c fluid.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c fluid.c -o fluid.o
 
-pwmlight:
+pwmlight: ogl_utils.o egl_utils.o dividers_gl.o liquid_gl.o exit_menu_gl.o image_gl.o cursor_gl.o rectangle_gl.o lodepng.o background_gl.o font_gl.o particles_gl.o mover_gl.o controls.o geometry.o hash.o communication.o
 	mkdir -p bin
-	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -DPWMLIGHT -lwiringPi -lcrypt -lwiringPiDev ogl_utils.c egl_utils.c dividers_gl.c liquid_gl.c exit_menu_gl.c image_gl.c cursor_gl.c rectangle_gl.c lodepng.c background_gl.c font_gl.c particles_gl.c mover_gl.c controls.c renderer.c geometry.c hash.c communication.c pwm_light.c fluid.c -o bin/sph.out
+	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -DPWMLIGHT -lwiringPi -lcrypt -lwiringPiDev ogl_utils.o egl_utils.o dividers_gl.o liquid_gl.o exit_menu_gl.o image_gl.o cursor_gl.o rectangle_gl.o lodepng.o background_gl.o font_gl.o particles_gl.o mover_gl.o controls.o geometry.o hash.o communication.o renderer.c pwm_light.c fluid.c -o bin/sph.out
 
 light:
 	mkdir -p bin
