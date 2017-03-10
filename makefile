@@ -117,3 +117,14 @@ resetleds:
 
 saferun:
 	cd $(HOME) ; mpirun -f ~/pi_mpihostsfile -n 9 ~/sph.out ; cd $(HOME)/SPH
+
+shutdown:
+	ssh chip2 "sudo shutdown -h now"
+	ssh chip3 "sudo shutdown -h now"
+	ssh chip4 "sudo shutdown -h now"
+	ssh chip5 "sudo shutdown -h now"
+	ssh chip6 "sudo shutdown -h now"
+	ssh chip7 "sudo shutdown -h now"
+	ssh chip8 "sudo shutdown -h now"
+	ssh chip9 "sudo shutdown -h now"
+	sudo shutdown -h now
