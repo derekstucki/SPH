@@ -21,7 +21,7 @@ void transfer(rgb_light_t *state, uint8_t r, uint8_t g, uint8_t b)
 {
     softPwmWrite(23, (uint16_t)r * 100 / 255);
     softPwmWrite(24, (uint16_t)g * 100 / 255);
-    softPwmWrite(25, (uint16_t)b * 100 / 255);
+    softPwmWrite(25, (uint16_t)b * 100 / 255 / 2);
 }
 
 void rgb_light_off(rgb_light_t *state)
