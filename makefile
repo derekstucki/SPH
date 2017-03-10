@@ -1,6 +1,6 @@
 CC=mpicc
 
-LDFLAGS+=-L$(SDKSTAGE)/opt/vc/lib/ -lGLESv2 -lGLEW -lEGL -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lpthread -lrt -L../libs/ilclient -L../libs/vgfont -lfreetype
+LDFLAGS+=-L$(SDKSTAGE)/opt/vc/lib/ -lGLESv2 -lGLEW -lEGL -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lrt -L../libs/ilclient -L../libs/vgfont -lfreetype
 INCLUDES+=-I$(SDKSTAGE)/opt/vc/include/ -I$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads -I$(SDKSTAGE)/opt/vc/include/interface/vmcs_host/linux -I./ -I../libs/ilclient -I../libs/vgfont -I/usr/include/freetype2 -I./blink1
 CFLAGS= -DRASPI -mfloat-abi=hard -mfpu=vfp -O3 -lm -ffast-math -g
 
@@ -68,7 +68,7 @@ fluid.o: fluid.c fluid.h
 
 pwmlight: ogl_utils.o egl_utils.o dividers_gl.o liquid_gl.o exit_menu_gl.o image_gl.o cursor_gl.o rectangle_gl.o lodepng.o background_gl.o font_gl.o particles_gl.o mover_gl.o controls.o geometry.o hash.o communication.o
 	mkdir -p bin
-	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -DPWMLIGHT -lwiringPi -lcrypt -lwiringPiDev ogl_utils.o egl_utils.o dividers_gl.o liquid_gl.o exit_menu_gl.o image_gl.o cursor_gl.o rectangle_gl.o lodepng.o background_gl.o font_gl.o particles_gl.o mover_gl.o controls.o geometry.o hash.o communication.o renderer.c pwm_light.c fluid.c -o bin/sph.out
+	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -DPWMLIGHT -lpthread -lwiringPi -lcrypt -lwiringPiDev ogl_utils.o egl_utils.o dividers_gl.o liquid_gl.o exit_menu_gl.o image_gl.o cursor_gl.o rectangle_gl.o lodepng.o background_gl.o font_gl.o particles_gl.o mover_gl.o controls.o geometry.o hash.o communication.o renderer.c pwm_light.c fluid.c -o bin/sph.out
 
 light:
 	mkdir -p bin
